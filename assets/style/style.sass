@@ -1,0 +1,186 @@
+---
+---
+
+// ===========================================
+// ============= Global Variables ============
+// ===========================================
+
+// ========== General =========
+$primary-color: #ffffff
+$secondary-color: #efefef
+$tertiary-color: #aaaaaa
+$text-color: #111111
+
+// ======= Header/Navbar ======
+$header-title-padding: 20px // The padding around the headers titles
+
+$nav-full-width: 300px // The width of the navbar including padding
+$nav-link-padding: 10px // The padding around navbar links
+
+// ======= Body =======
+$banner-height: 40vh // The height of the banner
+$body-padding: 30px // The padding around the body
+
+$main-content-width: 80vw // Width of the main content
+
+// ======= Footer =======
+$footer-padding: 30px // Padding around the footer
+
+
+// ===========================================
+// ============== Helper Classes =============
+// ===========================================
+.text-center
+    text-align: center
+
+.box-shadow
+    box-shadow: 0px 0px 25px #545454
+
+.button
+    background: $secondary-color
+    padding: 10px
+    width: fit-content
+    border: none
+    font-family: 'Open Sans', sans-serif !important
+    display: block
+    cursor: pointer
+
+    &:disabled
+        background: $tertiary-color
+
+.button-primary   
+    background: #27a3d6
+    color: #ffffff
+
+.select
+    background: $secondary-color
+    padding: 10px
+    width: fit-content
+    cursor: pointer
+    font-family: 'Open Sans', sans-serif !important
+    border: none
+    display: block
+
+.float-right
+    float: right
+
+.float-left
+    float: right
+// ===========================================
+// ============== General Styles =============
+// ===========================================
+
+body
+    margin: 0 auto
+    font-family: 'Open Sans', sans-serif
+    background: $secondary-color
+    outline: thin
+
+a
+    color: $text-color
+    text-decoration: none
+
+// ===========================================
+// =========== Header/Navbar Styles ==========
+// ===========================================
+
+header
+    position: fixed
+    float: left
+
+    .header-bg
+        width: 100vw
+        background: rgba(0, 0, 0, 0.3)
+        height: 100vh
+
+    .header-title
+        @extend .box-shadow
+        position: fixed
+        height: 30px
+        background: $primary-color
+        padding: $header-title-padding
+        width: calc(#{$nav-full-width} - 2*#{$header-title-padding} )
+        z-index: 1
+
+        .header-icon
+            height: 100%
+            width: 30px
+            cursor: pointer
+            float: left
+
+        .header-text-container
+            float: right
+            width: calc(#{$nav-full-width} - 2*#{$header-title-padding} - 30px )
+
+            .header-text
+                font-size: 23px
+                margin: 0 auto
+                width: fit-content
+
+
+    .nav
+        position: fixed
+        z-index: 1
+        top: calc( 30px + 2*#{$header-title-padding} )
+        display: block
+        width: calc(#{$nav-full-width})
+        background: $primary-color
+        height: calc(100vh - 30px)
+        transition-duration: 0.1s
+
+        a
+            text-align: center
+            width: calc( 100% - 2*#{$nav-link-padding} )
+            display: block
+            padding: $nav-link-padding
+            transition-duration: 0.2s
+
+            &:hover
+                background: $secondary-color
+
+        hr
+            margin: 0
+
+// ===========================================
+// =============== Body Styles ===============
+// ===========================================
+
+.banner
+    width: 100%
+    height: $banner-height
+    background-size: cover
+    background-position: center
+    background-image: url( "/assets/images/geo-1.png" )
+
+.main-content
+    @extend .box-shadow
+    width: calc( #{$main-content-width} - 2*#{$body-padding} )
+    margin: calc( -3*#{$banner-height}/4 ) auto 0 auto
+    background: $primary-color
+    padding: $body-padding
+    max-width: 720px
+
+#pdf
+    width: 100%
+    height: auto
+
+
+.profile-pic
+    width: 40% 
+    max-width: 300px
+    float: left
+    margin: 0 20px 20px 0
+
+    @media screen and (max-width: 500px)
+        width: 100% 
+        max-width: 100%
+
+// ===========================================
+// ============== Footer Styles ==============
+// ===========================================
+
+footer
+    padding: $footer-padding
+    width: calc( 100% - 2*#{$footer-padding} )
+    background: $secondary-color
+    box-shadow: 0px 0px 25px #545454

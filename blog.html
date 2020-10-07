@@ -1,0 +1,147 @@
+---
+layout: page
+title: Home
+permalink: /blog/
+---
+
+<!-- https://cojdev.github.io/lowpoly/ -->
+
+<h1>This is the blog</h1>
+
+<select id="categorySelect" class="select">
+    <option class="button" value="">All</option>
+    {% for category in site.categories %}
+       <option class="button" value="{{ category | first | strip_html }}">{{ category | first | strip_html }}</option>
+    {% endfor %}
+</select>
+
+<div id="posts">
+</div>
+
+<br/>
+
+<button class="button button-primary float-left" id="nextPage">Next Page</button>
+<button class="button button-primary" id="lastPage">Last Page</button>
+
+<script type="text/javascript">
+    // Settings
+    let postsPerPage = 10;
+
+    // The current page
+    let page = 0
+
+    // Array of all the posts
+    let posts = [
+        {% for post in site.posts %}
+            {
+                url: "{{ post.url }}",
+                title: "{{post.title}}",
+                category: "{{post.categories}}",
+                description: "{{ post.description }}"
+            },
+        {% endfor %}
+    ]
+
+    // Match a post to its filter
+    let filter = ( post, str ) => { return post.category.includes(str) }
+
+    let insertPosts = function( start, end, posts, filter, filterIn )
+    {
+        // Set the posts to be empty
+        $("#posts").html("");
+
+        let i = 0; // The number of posts that matches the filter found
+        let j = 0 // The current post being looked at
+
+        // Advance j and i so that they are at the correct starting point for the post page
+        for(; i < start && j < posts.length;)
+        {
+            i += ( filter( posts[i], filterIn ) ) ? 1 : 0;
+            ++j;
+        }
+
+        // Iterate through posts and add to html when they match filter
+        for(; i < end && j < posts.length;)
+        {
+            if( filter( posts[j], filterIn ) )
+            {
+                let html = `
+                    <br/>
+                    <a href="${ posts[j].url }"> <h3> ${ posts[j].title } - ${ posts[j].category } </h3> </a>
+                    <p>${ posts[j].description }</p>
+                    <a class="float-right button" href="${ posts[j].url }"> Read More </a>
+                    <br/>
+                    <br/>
+                    <hr/>
+                `;
+
+                $("#posts").html($("#posts").html() + html);
+
+                ++i;
+            }
+
+            ++j;
+        }
+    }
+
+    // Handles the disabeling of the pagination buttons
+    let disablePagination = function()
+    {
+        // Number of posts that match filter
+        let nPosts = 0;
+
+        // Count the number of posts that match the filter
+        for(let i = 0; i < posts.length; ++i)
+        {
+            if( filter( posts[i], $("#categorySelect").val() ) )
+            {
+                nPosts += 1;
+            }
+        }
+
+        // Handle disabeling
+        if(page == 0)
+        {
+            $("#lastPage").prop("disabled", true)
+        } else
+        {
+            $("#lastPage").prop("disabled", false)
+        }
+
+        // Handle disabeling
+        if( Math.floor( nPosts / postsPerPage ) == page + 1 )
+        {
+            $("#nextPage").prop("disabled", true)
+        } else
+        {
+            $("#nextPage").prop("disabled", false)
+        }
+    }
+
+    // Do the initial adding of the posts
+    insertPosts( page*postsPerPage, (page+1)*postsPerPage, posts, filter, "" );
+
+    // Handle category select
+    $("#categorySelect").change( () => {
+        page = 0;
+        insertPosts( page*postsPerPage, (page+1)*postsPerPage, posts, filter, $("#categorySelect").val() );
+        disablePagination();
+    });
+
+    // Handle last page button
+    $("#lastPage").click( () => {
+        page -= 1
+        insertPosts( page*postsPerPage, (page+1)*postsPerPage, posts, filter, $("#categorySelect").val() );
+        disablePagination();
+    });
+
+    // Handle next page button
+    $("#nextPage").click( () => {
+        page += 1
+        insertPosts( page*postsPerPage, (page+1)*postsPerPage, posts, filter, $("#categorySelect").val() );
+        disablePagination();
+    });
+
+
+    disablePagination()
+</script>

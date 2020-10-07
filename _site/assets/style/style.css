@@ -1,0 +1,53 @@
+.text-center { text-align: center; }
+
+.box-shadow, .main-content, header .header-title { box-shadow: 0px 0px 25px #545454; }
+
+.button { background: #efefef; padding: 10px; width: fit-content; border: none; font-family: 'Open Sans', sans-serif !important; display: block; cursor: pointer; }
+
+.button:disabled { background: #aaaaaa; }
+
+.button-primary { background: #27a3d6; color: #ffffff; }
+
+.select { background: #efefef; padding: 10px; width: fit-content; cursor: pointer; font-family: 'Open Sans', sans-serif !important; border: none; display: block; }
+
+.float-right { float: right; }
+
+.float-left { float: right; }
+
+body { margin: 0 auto; font-family: 'Open Sans', sans-serif; background: #efefef; outline: thin; }
+
+a { color: #111111; text-decoration: none; }
+
+header { position: fixed; float: left; }
+
+header .header-bg { width: 100vw; background: rgba(0, 0, 0, 0.3); height: 100vh; }
+
+header .header-title { position: fixed; height: 30px; background: #ffffff; padding: 20px; width: calc(300px - 2*20px); z-index: 1; }
+
+header .header-title .header-icon { height: 100%; width: 30px; cursor: pointer; float: left; }
+
+header .header-title .header-text-container { float: right; width: calc(300px - 2*20px - 30px); }
+
+header .header-title .header-text-container .header-text { font-size: 23px; margin: 0 auto; width: fit-content; }
+
+header .nav { position: fixed; z-index: 1; top: calc( 30px + 2*20px); display: block; width: calc(300px); background: #ffffff; height: calc(100vh - 30px); transition-duration: 0.1s; }
+
+header .nav a { text-align: center; width: calc( 100% - 2*10px); display: block; padding: 10px; transition-duration: 0.2s; }
+
+header .nav a:hover { background: #efefef; }
+
+header .nav hr { margin: 0; }
+
+.banner { width: 100%; height: 40vh; background-size: cover; background-position: center; background-image: url("/assets/images/geo-1.png"); }
+
+.main-content { width: calc( 80vw - 2*30px); margin: calc( -3*40vh/4) auto 0 auto; background: #ffffff; padding: 30px; max-width: 720px; }
+
+#pdf { width: 100%; height: auto; }
+
+.profile-pic { width: 40%; max-width: 300px; float: left; margin: 0 20px 20px 0; }
+
+@media screen and (max-width: 500px) { .profile-pic { width: 100%; max-width: 100%; } }
+
+footer { padding: 30px; width: calc( 100% - 2*30px); background: #efefef; box-shadow: 0px 0px 25px #545454; }
+
+/*# sourceMappingURL=style.css.map */

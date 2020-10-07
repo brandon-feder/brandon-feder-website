@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>You are looking at one now</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+<link rel="stylesheet" href="/assets/style/style.css">
+<script src="/assets/js/pdfjs/build/pdf.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <div class="header-title">
+    <svg class="header-icon lnr lnr-menu"><use xlink:href="#lnr-menu"></use></svg>
+    <div class="header-text-container">
+        <a class="header-text" style="display: block" href="/"> Brandon Feder </a>
+    </div>
+</div>
+
+<div class="header-bg"></div>
+
+<nav class="nav" style="margin-left: -300px">
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="/contact">Contact Me</a>
+</nav>
+
+<script type="text/javascript">
+    isNavClosed = true; // Flag for when the navbar is closed/open
+    $(".header-bg").fadeOut(0); // Fade out the header background overlay
+  
+    $(".header-icon").click( () => // When the header icon is pressed
+    {
+        $(".nav").css(  "margin-left", ( isNavClosed ) ? "0px" : "-300px" ); // Slide the navbar off/on screen
+
+        // Fade in/out the header background
+        if( isNavClosed )
+        {
+            $(".header-bg").fadeIn(200);
+        } else
+        {
+            $(".header-bg").fadeOut(200);
+        }
+
+        // Switch the flag
+        isNavClosed = !isNavClosed;
+    });
+</script>
+
+        </header>
+
+        <div class="banner"></div>
+        <div class="main-content">
+            <a class="button" href="\blog">Back</a>
+
+<h3>You are looking at one now</h3>
+
+<p>This is a test project post that will be removed in the future.</p>
+
+
+        </div>
+    </body>
+
+    <br/><br/><br/>
+
+    <footer>
+        <h4>I won't pretend to have a copyright, just please don't copy. Thanks!</h4>
+    </footer>
+</html>
